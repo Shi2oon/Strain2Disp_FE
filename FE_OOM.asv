@@ -7,8 +7,7 @@ function [X1,Y1,Ux,Uy,M4,Z1,Uz] = FE_OOM(alldata,ShapeFunOrder,resultsDir)
 % this is matlab function that integrate the strain field to displacement
 % either in 2D or 3D. the input should be the a matrix with each column
 % vector containing a strain field components arranged as below
-% alldata = [X(:) Y(:) Z(:) e11(:) e22(:) e33(:) e12(:) e13(:) e23(:)];
-% then you need to decide the between a 
+% alldata = [X(:) Y(:) Z(:) e11(:) e22(:) e33 e12(:) e13(:) e23(:)];
 
 set(0,'defaultAxesFontSize',25);        set(0,'DefaultLineMarkerSize',14)
 mkdir(resultsDir);
