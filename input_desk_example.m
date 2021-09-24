@@ -1,3 +1,4 @@
+clc;clear;close all
 % create a 30 MPa mode-I field (for mode II input 'II' for mixed mode input 'fun'
 % for 3D field use the 'Westergaard_3D' function with similar input. then
 % decide number of elements LxL. here I choose L = 12, to get faster
