@@ -6,11 +6,10 @@ function [NGP,NNode,Xa,Ya,E11,E22,E12,Nodes,Elements] = ...
 
 %% Domain Dimensions
 % The size:
-X = unique(alldata(:,1));   Lex = X(2)-X(1);     X0 = min(X)-0.5*Lex;   
+X = unique(alldata(:,1));   Lex = X(2)-X(1);     X0 = min(X)-0.5*Lex; 
 Lx     = max(unique(alldata(:,1)))-min(unique(alldata(:,1)))+Lex;
 Ndivx  = length(unique(alldata(:,1)));
-
-Y = unique(alldata(:,2));  Ley = Y(2)-Y(1);     Y0 = min(Y)-0.5*Ley;  
+Y = unique(alldata(:,2));  Ley = Y(2)-Y(1);      Y0 = min(Y)-0.5*Ley;
 Ly     = max(unique(alldata(:,2)))-min(unique(alldata(:,2)))+Ley;
 Ndivy  = length(unique(alldata(:,2)));
 
@@ -35,18 +34,18 @@ if  strcmp(ShapeFunOrder,'Linear') % NGP 1 reduced, 4 full
         Ndivy  = (Ndivy-1)/2;      
     end
 elseif  strcmp(ShapeFunOrder,'Quadratic') % NGP 4 reduced, 9 full, 1 
-    NGP = 9;                    NNode = 8;          N = 2;
-    Lex = 3.0*Lex;              Ley = 3.0*Ley;
+    NGP = 4;                    NNode = 8;          N = 2;
     Ndivx = floor(Ndivx/3);
     Ndivy = floor(Ndivy/3); 
 	if NGP == 1
         dX = [0];                       dY = [0];               
 	elseif NGP == 4
-        dX = (Lex/4)*[-1  1 -1 1];      dY = (Ley/4)*[-1 -1  1 1];     
+        dX = (Lex)*[-1  1 -1 1];      dY = (Ley/4)*[-1 -1  1 1];     
 	elseif NGP == 9
-        dX = (Lex/4)*[-1  0  1 -1 0 1 -1 0 1];
-        dY = (Ley/4)*[-1 -1 -1  0 0 0  1 1 1];
-	end
+        dX = (Lex)*[-1  0  1 -1 0 1 -1 0 1];
+        dY = (Ley)*[-1 -1 -1  0 0 0  1 1 1];
+    end
+    Lex = 3*Lex;              Ley = 3.0*Ley;
 end
 Tol = min([Lex Ley])/NNode;
 NElements = Ndivx*Ndivy;
@@ -90,6 +89,7 @@ for i=1:(N*Ndivx+1)
             Nodes(i+(j-1)*(N*Ndivy+1),1) = i+(j-1)*(N*Ndivy+1);
             Nodes(i+(j-1)*(N*Ndivy+1),2) = X0+(i-1)*(Lex/N);
             Nodes(i+(j-1)*(N*Ndivy+1),3) = Y0+(j-1)*(Ley/N);
+%             NodesNill(k)              = Nodes(N*i-1+(N*j-1)*(N*Ndivy+1)+1,1);
         elseif NDim == 3
             for o=1:(N*Ndivz+1) 
                 Nodes(i+(j-1)*(N*Ndivy+1)+(o-1)*(N*Ndivz+1),1) = i+(j-1)*(N*Ndivy+1)+(o-1)*(N*Ndivz+1);
@@ -203,9 +203,9 @@ elseif NDim ==3
     end
   end
 end
-
+% Nodes(NodesNill,:)=[];
 [NodesUn,IX,~] = setxor(Nodes(:,1),NodesNill);
-
+%{
 %%  Define the crack:
 if exist('a','var')
      a = 0.5*Lx;
@@ -289,7 +289,7 @@ for i=1:length(ElementsCrUp)
     end
 end
 end
-%}
+
 
 %% Plot Mesh:
 % Create the coordinate matrix:        
@@ -315,23 +315,6 @@ axis off
 xlabel('$X_{1}$','Interpreter','LaTeX','FontSize',12,'FontName','Times New Roman');
 ylabel('$X_{2}$','Interpreter','LaTeX','FontSize',12,'FontName','Times New Roman');
 hold off
-
+%}
+Nodes(NodesNill,:)=[];
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
