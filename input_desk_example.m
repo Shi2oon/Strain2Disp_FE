@@ -4,6 +4,7 @@ clc;clear;close all
 % decide number of elements LxL. here I choose L = 12, to get faster
 % results
 [files,Operation,unit,stif] = Westergaard_Modes(30,'plane_stress','I',12);
+% [files,Operation,unit,stif] = Westergaard_3D(90,'fun',5);
 % load the strain field data with [um] units you can choose other fields 
 % but be aware that figures will always assumes the input units are in um
 % which will not alter in any thing when it comes to caclulated field
