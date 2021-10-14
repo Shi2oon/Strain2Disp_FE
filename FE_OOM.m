@@ -30,13 +30,22 @@ else
     NDIM          = 2;      % 2D
     alldata = sortrows(alldata,[1,2]);
     %     try
-    %     [NGP,NNODE,M4.Xall,M4.Yall,M4.E11,M4.E22,M4.E12,M4.Nodes,M4.Elements] = ...
-    %             FE_Mesh_Generator(alldata,NDIM,ShapeFunOrder);
     %     catch
     %     fprintf('FE_Mesh_Generator failed ! .. Meshing ');
     [M4.Xall,M4.Yall,M4.E11,M4.E22,M4.E12,M4.Nodes,M4.Elements] = ...
         Meshing(alldata,NDIM,'Strain');  %non unifrom data
-    NGP = 4;        NNODE = 4;
+        NGP = 4;        NNODE = 4;  % full integration, change NGP to 1 for reduced
+        
+    if strcmpi(ShapeFunOrder,'Quadratic') || strcmpi(ShapeFunOrder,'Linear')
+        try% full integration, change NGP to 4 or 1 for reduced
+        [NGP,NNODE,M4.Xall,M4.Yall,M4.E11,M4.E22,M4.E12,M4.Nodes,M4.Elements] = ...
+            FE_Mesh_Generator(alldata,NDIM,ShapeFunOrder);
+        catch
+            disp('The current Quadratic meshing algorithm does not support non-rectnagular maps')
+            disp('The shape function is now linear')
+            ShapeFunOrder = 'Linear';
+        end
+    end
     %     end
     resultsDir = [resultsDir '\' ShapeFunOrder];
     Z1 = []; Uz = [];
