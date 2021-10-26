@@ -9,7 +9,17 @@ clc;clear;close all
 % but be aware that figures will always assumes the input units are in um
 % which will not alter in any thing when it comes to caclulated field
 load(files{2,3})
+percentTry = 100:-10:10;    ctx = 1; 
+    while ctx<length(percentTry)+1
+        try
+		[inData,Dir.ActP] = smotherData(alldata,percentTry(ctx));
 [X1,Y1,Ux,Uy,M4,Z1,Uz] = FE_OOM(alldata,'Linear',erase(files{2,1},'.mat'));
+        catch err
+            ctx = ctx+1;
+            if ctx == length(percentTry)+1;     rethrow(err);       end
+        end
+    end
+	
 
 % to go to abaqus you need to declear some mechanical values
 MatP.input_unit = unit{2,3}; % units to adjust in abaqus which is unitless
