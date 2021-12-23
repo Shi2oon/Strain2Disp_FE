@@ -12,7 +12,8 @@ load(files{2,3})
 percentTry = 100:-10:10;    ctx = 1; 
     while ctx<length(percentTry)+1
         try
-		[inData,Dir.ActP] = smotherData(alldata,percentTry(ctx));
+            % reduce data size if needed
+		[inData,Dir.ActP] = smotherData(alldata,percentTry(ctx)); 
 [X1,Y1,Ux,Uy,M4,Z1,Uz] = FE_OOM(alldata,'Linear',erase(files{2,1},'.mat'));
         catch err
             ctx = ctx+1;
