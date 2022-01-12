@@ -8,7 +8,7 @@ if DIM == 2 && strcmp(DATATYPE,'Strain')
     tmp         = sortrows(tmp',[1 2])';
     mesh.xy     = tmp(1:2,:);
     mesh.Data   = tmp(3:end,:);
-    mesh.winFE  = [2 2; mesh.winodow(1)-1 mesh.winodow(2)-1]; % take 2 elements fromc coners
+    mesh.winFE  = [1 1; mesh.winodow(1) mesh.winodow(2)]; % take 2 elements fromc coners
 
     %% Mesh for nodes & elements
     %Number of elements in the FE mesh
