@@ -1,4 +1,4 @@
-function [files,Operation,unit,stif] = ...
+function [files,Operation,unit,E,nu] = ...
     Westergaard_Modes(StressIntensityFactor,state,Mode,stPs,file2)
    
 if ~exist('Mode','var');        Mode = 'I';         end
@@ -135,7 +135,5 @@ exy = 0.5*(dux_dy + duy_dx);
         files{2,3} = [newfile '\' num2str(StressIntensityFactor) 'MPa_um_Strain.mat'];
     end
     save(files{2,3},'alldata')
-    stif{1}=E;
-    stif{2}=E;
 
 fprintf ('DONE\n\n');

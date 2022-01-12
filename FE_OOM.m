@@ -12,6 +12,7 @@ function [X1,Y1,Ux,Uy,M4,Z1,Uz] = FE_OOM(alldata,ShapeFunOrder,resultsDir)
 
 set(0,'defaultAxesFontSize',25);        set(0,'DefaultLineMarkerSize',14)
 mkdir(resultsDir);
+addpath(genpath([pwd '\functions']));
 
 %% Create the mesh object:
 fprintf ('Started Meshing ... ');
@@ -59,8 +60,8 @@ close all;          [M4.X,M4.Y] = myMesh.Plot_Mesh();   M4.IX = myMesh.IX';
 if M4.ScaleYN == 'Y' && NDIM == 2
     addScale(1,[M4.X(:) M4.Y(:)]);    % Plot the mesh
 end
-% saveas(gcf,[resultsDir '_Meshed ' num2str(NGP) '.fig']);
-% saveas(gcf,[resultsDir '_Meshed ' num2str(NGP) '.png']);
+saveas(gcf,[resultsDir '_Meshed ' num2str(NGP) '.fig']);
+saveas(gcf,[resultsDir '_Meshed ' num2str(NGP) '.png']);
 close all;  fprintf ('Done\nStarted Jacobian Calculation ..  ');
 [~,dNdXGPS,~,~] = myMesh.Jacobian();    % Calculate the Jacobian
 fprintf('Done for %d elements\nStart Assembly ...',length(M4.Elements));
@@ -95,8 +96,8 @@ save([resultsDir '_Integrated_Uxy.mat'],'M4','-append');
 if M4.ScaleYN == 'Y' && NDIM == 2
     addScale([2 3 5],[M4.X(:) M4.Y(:)]);
 end
-% saveas(gcf,[resultsDir '_Displacement_GP_' num2str(NGP) '.tif'],'tiffn');
-% saveas(gcf,[resultsDir '_Displacement_GP_' num2str(NGP) '.fig']);  close all
+saveas(gcf,[resultsDir '_Displacement_GP_' num2str(NGP) '.tif'],'tiffn');
+saveas(gcf,[resultsDir '_Displacement_GP_' num2str(NGP) '.fig']);  close all
 close
 %% asign values to Nodes
 for iV=1:size(M4.X,2)
