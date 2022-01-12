@@ -140,7 +140,7 @@ if NDIM == 3
     fprintf(inpFile,'%f %f %f %f %f %f %f\n',[X1(:)';Y1(:)';Z1(:)'-min(unique(Z1(:)));...
         Ux(:)';Uy(:)';Uz(:)';~isnan(X1(:))']);
     fclose(inpFile);
-    %{
+    %
     try
         [M4.RadEulerAng,M4.rotCentre,tmp] = shoemake_3D_v04_07_02_Abdo...
             (fileparts(resultsDir),'3D Data Uxy.dat','um');
