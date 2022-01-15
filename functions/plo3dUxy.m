@@ -1,4 +1,4 @@
-function [X1,Y1,Ux,Uy,Uz] = plo3dUxy(file)
+function [X1,Y1,Z1,Ux,Uy,Uz] = plo3dUxy(file)
 load(file); close all;
 set(0,'defaultAxesFontSize',22);       set(0,'DefaultLineMarkerSize',14) 
 tmp = sortrows(OutData,[3,1,2]);
@@ -95,22 +95,22 @@ saveas(gcf,[fileparts(file) '\2D_Uxyz.fig']);  close
     
 %%
 s1=subplot(3,3,1);  	contourf(ii.X1,ii.Y1,ii.Exx,'LineStyle','none');
-title('\epsilon_{xx}','fontsize',19);
+title(['' char(949)  '_{xx}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; 
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
-s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title('\epsilon_{xy}','fontsize',19);
+s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title(['' char(949)  '_{xy}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
-s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title('\epsilon_{xz}','fontsize',19);
+s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title(['' char(949)  '_{xz}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
-s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title('\epsilon_{yy}','fontsize',19);
+s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(4,:) = c.Limits;     colorbar off;
-s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title('\epsilon_{yz}','fontsize',19);
+s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title(['' char(949)  '_{yz}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(5,:) = c.Limits;    colorbar off; 
-s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title('\epsilon_{xx}','fontsize',19);
+s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{xx}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(6,:) = c.Limits;     colorbar off;
 addScale([3 3 9],[X1(:) Y1(:)]);
@@ -132,7 +132,7 @@ c.Position = [00.1236 0.1133 0.0112 0.4611];
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
 h = colorbar(cbax, 'location', 'westoutside','position', [0.9011 0.1211 0.0121 0.7533] );
-h.Label.String = '\epsilon'; 
+h.Label.String = ['' char(949)  '']; 
 set([s1 s2 s3 s5 s6 s9],"clim",caxis); 
 %}
 set(gcf,'position',[1 -41 1900 1000]); 
@@ -140,22 +140,22 @@ saveas(gcf,[fileparts(file) '\3D_UE.tif'],'tiffn');
 saveas(gcf,[fileparts(file) '\3D_UE.fig']);  close 
 %{
 %%
-s1=subplot(3,3,1);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Ux);title('\epsilon_{11}');
+s1=subplot(3,3,1);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Ux);title('' char(949)  '_{11}');
 axis image; axis off; colormap jet; box off; 
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
-s2=subplot(3,3,2);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Ux);title('\epsilon_{12}');
+s2=subplot(3,3,2);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Ux);title('' char(949)  '_{12}');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
-s3=subplot(3,3,3);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Uy);title('\epsilon_{13}');
+s3=subplot(3,3,3);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Uy);title('' char(949)  '_{13}');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
-s5=subplot(3,3,5);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Uy);title('\epsilon_{22}');
+s5=subplot(3,3,5);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Uy);title('' char(949)  '_{22}');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(4,:) = c.Limits;     colorbar off;
-s6=subplot(3,3,6);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Uz);title('\epsilon_{23}');
+s6=subplot(3,3,6);  	imagesc(unique(ii.X1),unique(ii.Y1),ij.Uz);title('' char(949)  '_{23}');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(5,:) = c.Limits;    colorbar off; 
-s9=subplot(3,3,9);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Uz);title('\epsilon_{33}');
+s9=subplot(3,3,9);  	imagesc(unique(ii.X1),unique(ii.Y1),ii.Uz);title('' char(949)  '_{33}');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(6,:) = c.Limits;     colorbar off;
 addScale([3 3 9],[X1(:) Y1(:)]);
@@ -177,7 +177,7 @@ c.Position = [00.1236 0.1133 0.0112 0.4611];
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
 h = colorbar(cbax, 'location', 'westoutside','position', [0.9011 0.1211 0.0121 0.7533] );
-h.Label.String = '\epsilon'; 
+h.Label.String = '' char(949)  ''; 
 set([s1 s2 s3 s5 s6 s9],"clim",caxis); 
 
 set(gcf,'position',[1 41 1900 900]); 
@@ -185,22 +185,22 @@ saveas(gcf,[fileparts(file) '\3D_UEm.tif'],'tiffn');
 saveas(gcf,[fileparts(file) '\3D_UEm.fig']);  close 
 %}
 %%
-s1=subplot(3,3,1);  	contourf(ii.X1,ii.Y1,ii.Exx,'LineStyle','none');title('\epsilon_{11}','fontsize',19);
+s1=subplot(3,3,1);  	contourf(ii.X1,ii.Y1,ii.Exx,'LineStyle','none');title(['' char(949)  '_{xx}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; 
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
-s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title('\epsilon_{12}','fontsize',19);
+s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title(['' char(949)  '_{xy}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
-s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title('\epsilon_{13}','fontsize',19);
+s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title(['' char(949)  '_{xz}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
-s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title('\epsilon_{22}','fontsize',19);
+s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(4,:) = c.Limits;     colorbar off;
-s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title('\epsilon_{23}','fontsize',19);
+s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title(['' char(949)  '_{yz}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(5,:) = c.Limits;    colorbar off; 
-s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title('\epsilon_{33}','fontsize',19);
+s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(6,:) = c.Limits;     colorbar off;
 addScale([3 3 9],[X1(:) Y1(:)]);
@@ -222,7 +222,7 @@ c.Position = [00.1236 0.1133 0.0112 0.4611];
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
 h = colorbar(cbax, 'location', 'westoutside','position', [0.9011 0.1211 0.0121 0.7533] );
-h.Label.String = '\epsilon'; 
+h.Label.String = ['' char(949)  '']; 
 set([s1 s2 s3 s5 s6 s9],"clim",caxis); 
 %}
 set(gcf,'position',[1 -41 1900 1000]); 
