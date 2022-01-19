@@ -21,14 +21,14 @@ Ux3D = dataum.Ux;     Uy3D = dataum.Uy;         Uz3D = dataum.Uz;
     c  =colorbar;	cU(4,:) = c.Limits;     colorbar off; axis off;title('U_{Mag}');
     addScale([1 1 1],[X1(:) Y1(:)]); xlabel('X'); ylabel('Y');
     set(gcf,'position',[1 41 800 800]); 
-
+    set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
     
     reply = questdlg_timer(10,'Is the plot is on the right axis?','Axis','Y','N','Y');
     if reply=='N'
         X1 = Y3D(:,:,1)';         Y1 = X3D(:,:,1)';         Z1 = Z3D(:,:,1)';
         Ux = max(Ux3D,[],3)';     Uy = max(Uy3D,[],3)';     Uz = max(Uz3D,[],3)';
     end
-    save(file,'X1','Y1','Z1','Ux','Uy','Uz','X3D','Y3D','Z3D','Ux3D','Uy3D','Uz3D','-append');
+%     save(file,'X1','Y1','Z1','Ux','Uy','Uz','X3D','Y3D','Z3D','Ux3D','Uy3D','Uz3D','-append');
 
 %%
 	[~,ii] = reshapeStrainData(alldata); %strain
@@ -57,31 +57,34 @@ end
 close;s=surf(X1,Y1,sqrt(Ux.^2+Uy.^2+Uz.^2)); s.EdgeColor = 'none';
 xlabel('X [\mum]');     ylabel('Y [\mum]'); zlabel('U_{Mag} [\mum]'); 
 set(gcf,'position',[1 41 800 800]); 
+set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 saveas(gcf,[fileparts(file) '\Surf_Uxyz.tif'],'tiffn');     
 saveas(gcf,[fileparts(file) '\Surf_Uxyz.fig']);  close 
 clear cU
 close;s=surf(X1,Y1,Uz); s.EdgeColor = 'none';
 xlabel('X [\mum]'); ylabel('Y [\mum]');zlabel('U_{z} [\mum]'); 
 set(gcf,'position',[1 41 800 800]); 
+set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 saveas(gcf,[fileparts(file) '\Surf_Uz.tif'],'tiffn');     
 saveas(gcf,[fileparts(file) '\Surf_Uz.fig']);  close 
 
 s1=subplot(1,4,1);  	contourf(X1,Y1,Ux,'LineStyle','none'); 	
-title('U_x','fontsize',20);
+title('U_x','fontsize',20);set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 axis image; axis off; colormap jet; box off; 
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
 s2=subplot(1,4,2);  	contourf(X1,Y1,Uy,'LineStyle','none'); 	
-title('U_y','fontsize',20);
+title('U_y','fontsize',20);set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
 s3=subplot(1,4,3);  	contourf(X1,Y1,Uz,'LineStyle','none'); 	
-title('U_z','fontsize',20);
+title('U_z','fontsize',20);set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
 s4=subplot(1,4,4);contourf(X1,Y1,sqrt(Ux.^2+Uy.^2+Uz.^2),'LineStyle','none')
 axis image; axis off; colormap jet;  box off; %set(gca,'Ydir','reverse')
 c  =colorbar;	     colorbar off;%cU(4,:) = c.Limits;
 addScale([1 4 4],[X1(:) Y1(:)]);title('U_{Mag}','fontsize',20);
+set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 %
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
@@ -96,38 +99,38 @@ saveas(gcf,[fileparts(file) '\2D_Uxyz.fig']);  close
 %%
 s1=subplot(3,3,1);  	contourf(ii.X1,ii.Y1,ii.Exx,'LineStyle','none');
 title(['' char(949)  '_{xx}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; 
+axis image; axis off; colormap jet; box off; set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
 s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title(['' char(949)  '_{xy}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
 s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title(['' char(949)  '_{xz}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
 s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(4,:) = c.Limits;     colorbar off;
 s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title(['' char(949)  '_{yz}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(5,:) = c.Limits;    colorbar off; 
-s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{xx}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{zz}'],'fontsize',19);
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(6,:) = c.Limits;     colorbar off;
 addScale([3 3 9],[X1(:) Y1(:)]);
  
 s4=subplot(3,3,4);  	contourf(X1,Y1,Ux,'LineStyle','none'); 	title('U_x','fontsize',19);
-axis image; axis off;  box off; colormap jet;
+axis image; axis off;  box off; colormap jet;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(1,:) = c.Limits;     colorbar off; 
 s7=subplot(3,3,7);  	contourf(X1,Y1,Uy,'LineStyle','none'); 	title('U_y','fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(2,:) = c.Limits;     colorbar off;
 s8=subplot(3,3,8);  	contourf(X1,Y1,Uz,'LineStyle','none'); 	title('U_z','fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(3,:) = c.Limits;    colorbar off; 
 %
 cu(abs(cu)==1)=0;
 set([s4 s7 s8],"clim",[min(cu(:)) max(cu(:))]); 
-subplot(3,3,4); c=colorbar;  c.Label.String = [ 'U [\mum]']; 
+subplot(3,3,4); c=colorbar;  c.Label.String = [ 'U (\mum)']; 
 c.Position = [00.1236 0.1133 0.0112 0.4611];
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
@@ -186,38 +189,38 @@ saveas(gcf,[fileparts(file) '\3D_UEm.fig']);  close
 %}
 %%
 s1=subplot(3,3,1);  	contourf(ii.X1,ii.Y1,ii.Exx,'LineStyle','none');title(['' char(949)  '_{xx}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; 
+axis image; axis off; colormap jet; box off; set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(1,:) = c.Limits;     colorbar off; 
 s2=subplot(3,3,2);  	contourf(ii.X1,ii.Y1,ii.Exy,'LineStyle','none');title(['' char(949)  '_{xy}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(2,:) = c.Limits;     colorbar off;
 s3=subplot(3,3,3);  	contourf(ii.X1,ii.Y1,ii.Exz,'LineStyle','none');title(['' char(949)  '_{xz}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(3,:) = c.Limits;     colorbar off;
 s5=subplot(3,3,5);  	contourf(ii.X1,ii.Y1,ii.Eyy,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(4,:) = c.Limits;     colorbar off;
 s6=subplot(3,3,6);  	contourf(ii.X1,ii.Y1,ii.Eyz,'LineStyle','none');title(['' char(949)  '_{yz}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(5,:) = c.Limits;    colorbar off; 
-s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{yy}'],'fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+s9=subplot(3,3,9);  	contourf(ii.X1,ii.Y1,ii.Ezz,'LineStyle','none');title(['' char(949)  '_{zz}'],'fontsize',19);
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cU(6,:) = c.Limits;     colorbar off;
 addScale([3 3 9],[X1(:) Y1(:)]);
  
 s4=subplot(3,3,4);  	contourf(X1,Y1,Ux,'LineStyle','none'); 	title('U_x','fontsize',19);
-axis image; axis off;  box off; colormap jet;
+axis image; axis off;  box off; colormap jet;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(1,:) = c.Limits;     colorbar off; 
 s7=subplot(3,3,7);  	contourf(X1,Y1,Uy,'LineStyle','none'); 	title('U_y','fontsize',19);
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(2,:) = c.Limits;     colorbar off;
 s8=subplot(3,3,8);  	contourf(X1,Y1,sqrt(Ux.^2+Uy.^2),'LineStyle','none'); 	title('U_{Mag}');
-axis image; axis off; colormap jet; box off; %set(gca,'Ydir','reverse')
+axis image; axis off; colormap jet; box off;set(gca,'Xdir','reverse');set(gca,'Ydir','reverse');
 c  =colorbar;	cu(3,:) = c.Limits;    colorbar off; 
 %
 cu(abs(cu)==1)=0;
 set([s4 s7 s8],"clim",[min(cu(:)) max(cu(:))]); 
-subplot(3,3,4); c=colorbar;  c.Label.String = [ 'U [\mum]']; 
+subplot(3,3,4); c=colorbar;  c.Label.String = [ 'U (\mum)']; 
 c.Position = [00.1236 0.1133 0.0112 0.4611];
 cbax  = axes('visible', 'off');         cU(abs(cU)==1)=0;
 caxis(cbax,[min(cU(:)) max(cU(:))]);
