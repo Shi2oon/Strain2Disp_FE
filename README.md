@@ -6,10 +6,11 @@
 
 <p align="center">
   <img alt="MATLAB" src="https://img.shields.io/badge/MATLAB-FE%20toolbox-orange">
-  <img alt="Finite elements" src="https://img.shields.io/badge/method-finite%20element%20least%20squares-blue">
+  <img alt="Finite elements" src="https://img.shields.io/badge/method-FELS-blue">
   <img alt="2D and 3D" src="https://img.shields.io/badge/fields-2D%20%7C%203D-green">
   <img alt="HR-EBSD" src="https://img.shields.io/badge/data-HR--EBSD%20%7C%20diffraction-purple">
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg"></a>
+  <a href="https://doi.org/10.1016/j.actamat.2025.121818"><img alt="Paper DOI" src="https://img.shields.io/badge/DOI-10.1016%2Fsj.actamat.2025.121818-blue.svg"></a>
 </p>
 
 ---
