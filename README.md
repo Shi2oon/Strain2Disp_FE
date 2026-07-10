@@ -382,7 +382,6 @@ The article is open access under the Creative Commons Attribution 4.0 Internatio
 
 - [DIC2ABAQUS](https://github.com/Shi2oon/DIC2ABAQUS) - DIC-to-Abaqus workflows for fracture analysis.
 - [Defect_Descriptor](https://github.com/Shi2oon/Defect_Descriptor) - configurational-force and mixed-mode SIF extraction from measured fields.
-- [Strain2Disp_FE](https://github.com/Shi2oon/Strain2Disp_FE) - finite-element reconstruction of displacement fields from measured strain or deformation-gradient maps.
 
 ---
 
