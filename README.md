@@ -207,40 +207,6 @@ cfg.exportAbaqus    = true;
 
 ---
 
-## Figure gallery
-
-<p align="center">
-  <img src="functions/Assets/Fig4_FIB_crack_geometry.png" width="520" alt="FIB crack geometry around indentation">
-</p>
-
-<p align="center"><em>FIB-based subsurface crack geometry used to interpret the indentation-induced crack field.</em></p>
-
-<p align="center">
-  <img src="functions/Assets/Fig6_GND_and_EBSD_depth.png" width="680" alt="GND density and EBSD information depth analysis">
-</p>
-
-<p align="center"><em>Rigid-body correction, GND distribution and EBSD information-depth analysis.</em></p>
-
-<p align="center">
-  <img src="functions/Assets/Fig8_Z_thickness_displacement_sensitivity.png" width="760" alt="Sensitivity of reconstructed displacement to assumed EBSD information depth">
-</p>
-
-<p align="center"><em>Influence of assumed membrane thickness on reconstructed out-of-plane displacement.</em></p>
-
-<p align="center">
-  <img src="functions/Assets/Fig10_crack3_fracture_parameters.png" width="850" alt="Fracture parameters for crack 3">
-</p>
-
-<p align="center"><em>Elastic strain, reconstructed displacement and fracture parameters for one indentation crack.</em></p>
-
-<p align="center">
-  <img src="functions/Assets/Fig11_crack2_fracture_parameters.png" width="850" alt="Fracture parameters for crack 2">
-</p>
-
-<p align="center"><em>Elastic strain, reconstructed displacement and fracture parameters for a second indentation crack.</em></p>
-
----
-
 ## Installation
 
 Clone the repository and add it to your MATLAB path:
