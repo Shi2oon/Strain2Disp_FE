@@ -89,7 +89,7 @@ The formulation supports two major input families:
 - HR-EBSD application to indentation-induced cracks.
 - Optional post-processing for rigid-body translation and rotation removal.
 - Reconstructed displacement fields suitable for downstream fracture analysis.
-- Compatible with workflows where Abaqus is used to compute `J`, `K<sub>I</sub>`, `K<sub>II</sub>` and `K<sub>III</sub>`.
+- Compatible with workflows where Abaqus is used to compute `J`, K<sub>I</sub>, K<sub>II</sub> and K<sub>III</sub>.
 
 ---
 
@@ -344,6 +344,7 @@ Strain2Disp_FE/
 ├── functions/
 ├── src/
 └── outputs/
+```
 
 ---
 
