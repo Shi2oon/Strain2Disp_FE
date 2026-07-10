@@ -25,7 +25,7 @@ The method is especially useful for experimental mechanics workflows involving:
 - 2D and 3D crack-tip benchmark fields,
 - indentation-induced cracks,
 - displacement reconstruction before Abaqus-based fracture analysis,
-- extraction of `K<sub>I</sub>`, `K<sub>II</sub>`, `K<sub>III</sub>` and `J` from reconstructed fields.
+- extraction of K<sub>I</sub>, K<sub>II</sub>, K<sub>III</sub> and `J` from reconstructed fields.
 
 The central idea is simple: measured strain or deformation-gradient components are treated as known quantities, while nodal displacements are treated as unknowns. The domain is discretised with finite elements, the displacement-gradient equations are assembled over the measurement points, and the resulting overdetermined system is solved in a least-squares sense.
 
