@@ -75,8 +75,8 @@ The formulation supports two major input families:
 
 | Input family | Typical source | Reconstructed output |
 |---|---|---|
-| 2D strain fields | HR-EBSD, DIC-derived strain, analytical benchmarks | `U<sub>x</sub>`, `U<sub>y</sub>` |
-| 3D strain or deformation-gradient fields | 3D diffraction, DVC-derived gradients, synthetic benchmarks | `U<sub>x</sub>`, `U<sub>y</sub>`, `U<sub>z</sub>` |
+| 2D strain fields | HR-EBSD, DIC-derived strain, analytical benchmarks | U<sub>x</sub>, U<sub>y</sub> |
+| 3D strain or deformation-gradient fields | 3D diffraction, DVC-derived gradients, synthetic benchmarks | U<sub>x</sub>, U<sub>y</sub>, U<sub>z</sub> |
 
 ---
 
@@ -125,7 +125,7 @@ cfg.removeRigidBody = true;
 % results = Strain2Disp_FE(cfg);
 ```
 
-Expected outputs include reconstructed `U<sub>x</sub>` and `U<sub>y</sub>` maps, error maps, and line-profile comparisons against the analytical solution.
+Expected outputs include reconstructed U<sub>x</sub> and U<sub>y</sub> maps, error maps, and line-profile comparisons against the analytical solution.
 
 ---
 
@@ -264,8 +264,8 @@ Typical outputs include:
 
 | Output | Description |
 |---|---|
-| `U<sub>x</sub>`, `U<sub>y</sub>`, `U<sub>z</sub>` | reconstructed displacement components |
-| `H<sub>ij</sub>` | reconstructed displacement-gradient components |
+| U<sub>x</sub>, U<sub>y</sub>, U<sub>z</sub> | reconstructed displacement components |
+| H<sub>ij</sub> | reconstructed displacement-gradient components |
 | `residual` | least-squares residual or reconstruction error measure |
 | `mesh` | nodal coordinates and element connectivity |
 | `figures` | displacement maps, validation plots and line profiles |
