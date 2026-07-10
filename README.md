@@ -9,7 +9,7 @@
   <img alt="Finite elements" src="https://img.shields.io/badge/method-finite%20element%20least%20squares-blue">
   <img alt="2D and 3D" src="https://img.shields.io/badge/fields-2D%20%7C%203D-green">
   <img alt="HR-EBSD" src="https://img.shields.io/badge/data-HR--EBSD%20%7C%20diffraction-purple">
-  <img alt="Licence" src="https://img.shields.io/badge/licence-check%20repository-lightgrey">
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg"></a>
 </p>
 
 ---
