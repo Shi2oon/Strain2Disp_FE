@@ -9,7 +9,7 @@
   <img alt="Finite elements" src="https://img.shields.io/badge/method-FELS-blue">
   <img alt="2D and 3D" src="https://img.shields.io/badge/fields-2D%20%7C%203D-green">
   <img alt="HR-EBSD" src="https://img.shields.io/badge/data-HR--EBSD%20%7C%20diffraction-purple">
-    <a href="https://github.com/Shi2oon/Strain2Disp_FE/blob/master/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-green" alt="MIT licence"></a>
+    <a href="https://github.com/Shi2oon/Strain2Disp_FE/blob/LICENSE"><img src="https://img.shields.io/badge/licence-MIT-green" alt="MIT licence"></a>
   <a href="https://doi.org/10.1016/j.actamat.2025.121818"><img alt="Paper DOI" src="https://img.shields.io/badge/DOI-10.1016%2Fsj.actamat.2025.121818-blue.svg"></a>
 </p>
 
